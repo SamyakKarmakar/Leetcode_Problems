@@ -4,6 +4,15 @@ class Solution(object):
         :type n: int
         :rtype: int
     """
-        if n==0 or n==1:
-            return 1
-        return self.climbStairs(n-1) + self.climbStairs(n-2)
+        if n <= 2:
+            return n
+
+        first = 1
+        second = 2
+
+        for i in range(3, n + 1):
+            third = first + second
+            first = second
+            second = third
+
+        return second
